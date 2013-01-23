@@ -1,8 +1,6 @@
 <div> 
     </br></br>
     <!--Your score so far is <?php echo $score?></b>!</br></br>-->
-    test<br><br>
-    You currently have <?php echo $count?> medicine(s) in your inventory.</br></br>
     
     <?php
     

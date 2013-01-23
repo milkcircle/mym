@@ -23,13 +23,16 @@ DROP TABLE IF EXISTS `meds`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `meds` (
-  `id` int(11) NOT NULL,
+  `m_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(11) unsigned NOT NULL,
   `name` varchar(255) NOT NULL,
   `dosage` varchar(255) NOT NULL,
   `freq` int(10) unsigned NOT NULL,
   `current` int(10) unsigned NOT NULL,
   `missed` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`,`name`)
+  PRIMARY KEY (`m_id`),
+  UNIQUE KEY `id` (`id`,`name`),
+  CONSTRAINT `meds_ibfk_1` FOREIGN KEY (`id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -39,7 +42,6 @@ CREATE TABLE `meds` (
 
 LOCK TABLES `meds` WRITE;
 /*!40000 ALTER TABLE `meds` DISABLE KEYS */;
-INSERT INTO `meds` VALUES (11,'test','test',2,1,0);
 /*!40000 ALTER TABLE `meds` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -51,16 +53,20 @@ DROP TABLE IF EXISTS `reminders`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `reminders` (
-  `id` int(11) NOT NULL,
-  `med` varchar(255) NOT NULL,
+  `r_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(11) unsigned NOT NULL,
+  `m_id` int(10) unsigned NOT NULL,
   `dosage` varchar(255) NOT NULL,
   `time` int(11) NOT NULL,
   `send` int(11) NOT NULL DEFAULT '0',
   `counter` int(11) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `alt_email` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`,`med`,`time`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`r_id`),
+  UNIQUE KEY `id` (`id`,`m_id`,`time`),
+  KEY `m_id` (`m_id`),
+  KEY `time` (`time`),
+  CONSTRAINT `reminders_ibfk_1` FOREIGN KEY (`id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `reminders_ibfk_2` FOREIGN KEY (`m_id`) REFERENCES `meds` (`m_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -69,7 +75,6 @@ CREATE TABLE `reminders` (
 
 LOCK TABLES `reminders` WRITE;
 /*!40000 ALTER TABLE `reminders` DISABLE KEYS */;
-INSERT INTO `reminders` VALUES (11,'test','test',0,0,0,'acheng@college.harvard.edu','13109976810@tmomail.net'),(11,'test','test',1,0,1,'acheng@college.harvard.edu','13109976810@tmomail.net');
 /*!40000 ALTER TABLE `reminders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -85,11 +90,10 @@ CREATE TABLE `users` (
   `hash` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `score` int(11) NOT NULL DEFAULT '0',
-  `count` int(11) NOT NULL,
   `alt_email` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`,`alt_email`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -98,7 +102,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (18,'$1$urWdOVtD$9dQgwJNhsw1wNcoUsleUk/','acheng@college.harvard.edu',3,0,'3109976810');
+INSERT INTO `users` VALUES (20,'$1$A2Pno4rR$hCdIRGkhHuOL0cIJ/3hrU.','acheng@college.harvard.edu',1,'');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -111,4 +115,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-01-23 12:27:06
+-- Dump completed on 2013-01-23 13:56:47

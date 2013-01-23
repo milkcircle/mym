@@ -51,8 +51,6 @@
         // if it worked, update the count (which tells how many meds the user has)
         else
         {
-            query("UPDATE users SET count = count + 1 WHERE id = ?", $_SESSION["id"]);
-            
             $email_info = query("SELECT * FROM users WHERE id = ?", $_SESSION["id"]);
             $email_info = $email_info[0];
             $primary = $email_info["email"];
@@ -63,7 +61,7 @@
             // also, create null reminders for the medicine in the reminders database.
             while ($counter < $_POST["freq"])
             {
-                query("INSERT INTO reminders (id, email, med, dosage, time, send, alt_email, counter) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", $_SESSION["id"], $primary, $_POST["med"], $_POST["dosage"], $counter, 0, $alt, $counter);
+                query("INSERT INTO reminders (id, med, dosage, time, send, counter) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", $_SESSION["id"], $_POST["med"], $_POST["dosage"], $counter, 0, $counter);
                 $counter++;
             }
            

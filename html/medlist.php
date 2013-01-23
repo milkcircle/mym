@@ -23,10 +23,6 @@
         query("DELETE FROM meds WHERE id = ? AND name = ?", $_SESSION["id"], $_POST["med"]);
         query("DELETE FROM reminders WHERE id = ? AND med = ?", $_SESSION["id"], $_POST["med"]);
         
-        // update the number of medicines the user has
-        if ($_POST["med"] != 'null')
-            query("UPDATE users SET count = count - 1 WHERE id = ?", $_SESSION["id"]);
-
         // retrieve all the information about the user's medications
         $rows = query("SELECT * FROM meds WHERE id = ?", $_SESSION["id"]);
         
