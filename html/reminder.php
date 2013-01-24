@@ -33,7 +33,9 @@
                 $_POST["$counter-h"] = $_POST["$counter-h"] + 12;
                 
             // makes that reminder
-            query("UPDATE reminders SET send = ?, time = ? WHERE id = ? AND med = ? AND counter = ?", $_POST["$counter-e"], 3600 * $_POST["$counter-h"] + 60 * $_POST["$counter-m"], $_SESSION["id"], $_SESSION["med"], $counter);
+            $m_id = query("SELECT m_id FROM meds WHERE id = ? AND name = ?", $_SESSION["id"], $_SESSION["med"]);
+            $m_id = $m_id["m_id"];
+            query("UPDATE reminders SET send = ?, time = ? WHERE id = ? AND m_id = ? AND counter = ?", $_POST["$counter-e"], 3600 * $_POST["$counter-h"] + 60 * $_POST["$counter-m"], $_SESSION["id"], $m_id, $counter);
             $counter++;
         }
         

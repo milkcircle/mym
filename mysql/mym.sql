@@ -33,7 +33,7 @@ CREATE TABLE `meds` (
   PRIMARY KEY (`m_id`),
   UNIQUE KEY `id` (`id`,`name`),
   CONSTRAINT `meds_ibfk_1` FOREIGN KEY (`id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,6 +42,7 @@ CREATE TABLE `meds` (
 
 LOCK TABLES `meds` WRITE;
 /*!40000 ALTER TABLE `meds` DISABLE KEYS */;
+INSERT INTO `meds` VALUES (20,27,'test3','test',3,3,0);
 /*!40000 ALTER TABLE `meds` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -56,7 +57,6 @@ CREATE TABLE `reminders` (
   `r_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `id` int(11) unsigned NOT NULL,
   `m_id` int(10) unsigned NOT NULL,
-  `dosage` varchar(255) NOT NULL,
   `time` int(11) NOT NULL,
   `send` int(11) NOT NULL DEFAULT '0',
   `counter` int(11) NOT NULL,
@@ -66,7 +66,7 @@ CREATE TABLE `reminders` (
   KEY `time` (`time`),
   CONSTRAINT `reminders_ibfk_1` FOREIGN KEY (`id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `reminders_ibfk_2` FOREIGN KEY (`m_id`) REFERENCES `meds` (`m_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -75,6 +75,7 @@ CREATE TABLE `reminders` (
 
 LOCK TABLES `reminders` WRITE;
 /*!40000 ALTER TABLE `reminders` DISABLE KEYS */;
+INSERT INTO `reminders` VALUES (21,27,20,0,0,0),(22,27,20,1,0,1),(23,27,20,2,0,2);
 /*!40000 ALTER TABLE `reminders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -92,8 +93,10 @@ CREATE TABLE `users` (
   `score` int(11) NOT NULL DEFAULT '0',
   `alt_email` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `email` (`email`,`alt_email`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+  UNIQUE KEY `email_2` (`email`),
+  UNIQUE KEY `email` (`email`,`alt_email`),
+  UNIQUE KEY `alt_email` (`alt_email`)
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -102,7 +105,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (20,'$1$A2Pno4rR$hCdIRGkhHuOL0cIJ/3hrU.','acheng@college.harvard.edu',1,'');
+INSERT INTO `users` VALUES (27,'$1$DHKzkANR$UKWZL.K2yyxHjbRhQOLHs0','acheng@college.harvard.edu',2,'');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -115,4 +118,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-01-23 13:56:47
+-- Dump completed on 2013-01-23 21:10:46

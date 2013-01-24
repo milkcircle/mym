@@ -42,13 +42,16 @@
         $check = query("INSERT INTO meds (id, name, dosage, freq, current) VALUES(?, ?, ?, ?, ?)", $_SESSION["id"],
             $_POST["med"], $_POST["dosage"], $_POST["freq"], $_POST["freq"]);
         
+        // retrieve the $m_id from the med we just inserted
+        $m_id = query("SELECT m_id FROM meds WHERE id = ? AND name = ?", $_SESSION["id"], $_POST["med"]);
+        $m_id = $m_id[0]["m_id"];
+        
         // check that it worked...otherwise, it must already be there.
         if ($check === false)
         {
             apologize("This medicine is already in your inventory.");
         }
-        
-        // if it worked, update the count (which tells how many meds the user has)
+
         else
         {
             $email_info = query("SELECT * FROM users WHERE id = ?", $_SESSION["id"]);
@@ -61,7 +64,7 @@
             // also, create null reminders for the medicine in the reminders database.
             while ($counter < $_POST["freq"])
             {
-                query("INSERT INTO reminders (id, med, dosage, time, send, counter) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", $_SESSION["id"], $_POST["med"], $_POST["dosage"], $counter, 0, $counter);
+                query("INSERT INTO reminders (id, m_id, time, send, counter) VALUES (?, ?, ?, ?, ?)", $_SESSION["id"], $m_id, $counter, '0', $counter);
                 $counter++;
             }
            

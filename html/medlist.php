@@ -21,7 +21,6 @@
     {
         // delete the medicine from the dropdown list, from both the meds and reminders tables
         query("DELETE FROM meds WHERE id = ? AND name = ?", $_SESSION["id"], $_POST["med"]);
-        query("DELETE FROM reminders WHERE id = ? AND med = ?", $_SESSION["id"], $_POST["med"]);
         
         // retrieve all the information about the user's medications
         $rows = query("SELECT * FROM meds WHERE id = ?", $_SESSION["id"]);

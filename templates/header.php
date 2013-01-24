@@ -57,17 +57,6 @@
                                 </ul>
                             </li>
                             <li><a href="logout.php">LOG OUT</a></li>
-                        </ul>   
-                    <span class="alignright"><b><i>Score = 
-                        <?php
-                        
-                            $score = query("SELECT score FROM users WHERE id = ?", $_SESSION["id"]);
-                            
-                            $score = $score[0]["score"];
-                            
-                            echo $score;
-                            
-                        ?>
-                    </b></i></span> 
+                        </ul>                       
                 </div>
             </div>​

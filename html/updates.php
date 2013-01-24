@@ -91,14 +91,15 @@
         // simplify variable
         $email = $row["email"];
         
-        // finds all reminders for that email set to send to email only
-        $reminds = query("SELECT * FROM reminders WHERE email = ? AND send = 1", $email);
+        // finds all reminders for this user set to send to email only
+        $reminds = query("SELECT * FROM reminders WHERE id = ? AND send = 1", $_SESSION["id"]);
+        $meds = query("SELECT * FROM meds WHERE m_id = ?", $reminds["m_id"]);
         
         // set up email
         $mail = new PHPMailer();
         $mail->IsSMTP();
         $mail->Host = "smtp.fas.harvard.edu";
-        $mail->SetFrom("admin@cs50-mym.harvard.whitehouse.president.gov");
+        $mail->SetFrom("admin@mym.com");
         $mail->AddAddress("$email");
         $mail->Subject = "MYM Reminder";
         $body="";
@@ -108,8 +109,8 @@
         {
             // simplify variables
             $time = $remind["time"];
-            $med = $remind["med"];
-            $dosage = $remind["dosage"];
+            $med = $meds["name"];
+            $dosage = $meds["dosage"];
             
             // check for a time within 30 seconds of the current time
             if($t - $time < 30 && $t - $time > -30)
@@ -119,15 +120,16 @@
         }
         
         // same thing, but for the reminders meant for both the email and the phone
-        $reminds = query("SELECT * FROM reminders WHERE email = ? AND send = 3", $email);
+        $reminds = query("SELECT * FROM reminders WHERE id = ? AND send = 3", $SESSION_["id"]);
+        $meds = query("SELECT * FROM meds WHERE m_id = ?", $reminds["m_id"]);
         
         // check to see if reminder is necessary
         foreach($reminds as $remind)
         {
             // simplify variables
             $time = $remind["time"];
-            $med = $remind["med"];
-            $dosage = $remind["dosage"];
+            $med = $meds["name"];
+            $dosage = $meds["dosage"];
             
             // check for a time within 30 seconds of the current time
             if($t - $time < 30 && $t - $time > -30)
@@ -148,13 +150,14 @@
         $phone = $row["alt_email"];
         
         // find all reminders for the phone only
-        $reminds = query("SELECT * FROM reminders WHERE alt_email = ? AND send = 2", $phone);
+        $reminds = query("SELECT * FROM reminders WHERE id = ? AND send = 2", $SESSION_["id"]);
+        $meds = query("SELECT * FROM meds WHERE m_id = ?", $reminds["m_id"]);
         
         // set up email
         $mail = new PHPMailer();
         $mail->IsSMTP();
         $mail->Host = "smtp.fas.harvard.edu";
-        $mail->SetFrom("admin@cs50-mym.harvard.whitehouse.president.gov");
+        $mail->SetFrom("admin@mym.net");
         $mail->AddAddress("$phone");
         $mail->Subject = "MYM Reminder";
         $body="";
@@ -164,8 +167,8 @@
         {
             // simplify variables
             $time = $remind["time"];
-            $med = $remind["med"];
-            $dosage = $remind["dosage"];
+            $med = $meds["name"];
+            $dosage = $meds["dosage"];
             
             // check for a time within 30 seconds of the current time
             if($t - $time < 30 && $t - $time > -30)
@@ -176,14 +179,15 @@
         
         // do it again for reminders for both phone and email
         $reminds = query("SELECT * FROM reminders WHERE alt_email = ? AND send = 3", $phone);
+        $meds = query("SELECT * FROM meds WHERE m_id = ?", $reminds["m_id"]);
         
         // check to see if reminder is necessary
         foreach($reminds as $remind)
         {
             // simplify variables
             $time = $remind["time"];
-            $med = $remind["med"];
-            $dosage = $remind["dosage"];
+            $med = $meds["name"];
+            $dosage = $meds["dosage"];
             
             // check for a time within 30 seconds of the current time
             if($t - $time < 30 && $t - $time > -30)
