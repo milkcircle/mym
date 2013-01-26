@@ -13,12 +13,12 @@
     define("DATABASE", "mym");
 
     // your database's password
-    define("PASSWORD", "root");
+    define("PASSWORD", "crimson");
 
     // your database's server
-    define("SERVER", "localhost");
+    define("SERVER", "mym");
 
     // your database's username
-    define("USERNAME", "root");
+    define("USERNAME", "jharvard");
 
 ?>
