@@ -28,14 +28,22 @@
         if (empty($results))
         {
             $check = query("INSERT INTO medication (proprietary_name, creator_id) VALUES (?, ?)", $medication_name, $_SESSION["u_id"]);
-            $results = query("SELECT LAST_INSERT_ID() AS m_id");
-            echo "hi";
+            $results = query("SELECT m_id FROM medication WHERE proprietary_name = ?", $medication_name);
         }
 
         // set m_id as m_id of the first entry of results (multiple results may have been returned)
         $m_id = $results[0]["m_id"];
-
-        echo $m_id;
+        
+        // now, insert this information into user_medication table
+            // represent today's date as SQL format
+            $today = date(Y-m-d);
+        
+        $check = query("INSERT INTO user_medication (u_id, m_id, start, b_hidden) VALUES (?, ?, ?, ?)", $_SESSION["u_id"], $m_id, $today, 0);
+        if ($check === false)
+        {
+            echo "Something went wrong inserting into association array.";
+        }
+        
     }    
     else
     {
