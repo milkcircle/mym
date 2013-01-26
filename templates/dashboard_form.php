@@ -1,4 +1,4 @@
-<?php echo "Username: " + $full_name ?>
+<?php echo "Your name: " + $full_name ?>
 
 <a href="add_medication.php">Add a medication</a>
 

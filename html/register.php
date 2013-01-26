@@ -82,34 +82,6 @@
         }
         */
 
-    /***********************************************************************
-     * register.php
-     *
-     * MYM
-     *
-     * Registers user.
-     **********************************************************************/
-
-    // configuration
-    require("../includes/config.php"); 
-
-    // if form was submitted
-    if ($_SERVER["REQUEST_METHOD"] == "POST")
-    {
-        // validate inputs
-        if (empty($_POST["full_name"]))
-        {
-            echo "Please provide your name.";
-        }            
-        else if (empty($_POST["username"]))
-        {
-            echo "Please provide a username.";
-        }
-        else if (empty($_POST["password"]) || ($_POST["password"] != $_POST["confirmation"]))
-        {
-            echo "Make sure your passwords match!";
-        }
-        
         /*
          * EMAIL AND PHONE VALIDATION CODE
          *
@@ -126,6 +98,32 @@
             echo "Please enter a valid phone number.";
         }
         */
+
+    /***********************************************************************
+     * register.php
+     *
+     * MYM
+     *
+     * Registers user.
+     **********************************************************************/
+
+    // configuration
+    require("../includes/config.php"); 
+
+    // if form was submitted
+    if ($_SERVER["REQUEST_METHOD"] == "POST")
+    {
+        // validate inputs
+        if (empty($_POST["full_name"]) || empty($_POST["username"]) || empty($_POST["password"]) || empty($_POST["confirmation"]))
+        {
+            echo "empty fields";
+        }            
+        else if ($_POST["password"] != $_POST["confirmation"])
+        {
+            echo "Make sure your passwords match!";
+        }
+        
+        
 
         // try to register user
         $confirm = query("INSERT INTO user (username, full_name, hash) VALUES(?, ?, ?)", 
