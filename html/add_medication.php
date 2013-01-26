@@ -36,7 +36,7 @@
         
         // now, insert this information into user_medication table
             // represent today's date as SQL format
-            $today = date(Y-m-d);
+            $today = date("Y-m-d");
         
         $check = query("INSERT INTO user_medication (u_id, m_id, start, b_hidden) VALUES (?, ?, ?, ?)", $_SESSION["u_id"], $m_id, $today, 0);
         if ($check === false)
