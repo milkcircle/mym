@@ -3,8 +3,7 @@
     /***********************************************************************
      * config.php
      *
-     * Computer Science 50
-     * Final Project
+     * MYM
      *
      * Configures pages.
      **********************************************************************/
@@ -23,7 +22,7 @@
     // require authentication for most pages (altered to accomodate About Us and Using This Site)
     if (!preg_match("{(?:login|logout|register|about|howto)\.php$}", $_SERVER["PHP_SELF"]))
     {
-        if (empty($_SESSION["id"]))
+        if (empty($_SESSION["u_id"]))
         {
             redirect("login.php");
         }

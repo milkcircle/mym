@@ -3,22 +3,20 @@
     /***********************************************************************
      * login.php
      *
-     * Computer Science 50
-     * Final Project
+     * MYM
      *
      * Log in user.
-     * hcs.harvard.edu/~cs50-mym/login.php
      **********************************************************************/
 
     // configuration
     require("../includes/config.php"); 
 
     // if form was submitted
-    
+
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
-        // query database for user
-        $rows = query("SELECT * FROM users WHERE email = ?", $_POST["email"]);
+        // query database for user (USING USERNAME)
+        $rows = query("SELECT * FROM user WHERE username = ?", $_POST["username"]);
 
         // if we found user, check password
         if (count($rows) == 1)
@@ -30,23 +28,27 @@
             if (crypt($_POST["password"], $row["hash"]) == $row["hash"])
             {
                 // remember that user's now logged in by storing user's ID in session
-                $_SESSION["id"] = $row["id"];
+                $_SESSION["u_id"] = $row["u_id"];
 
-                // redirect to portfolio
-                // redirect("index.php");
-                echo "Valid login";
+                // take us to our account
+                redirect("index.php");
+            }
+
+            // if password is incorrect
+            else
+            {
+                echo "Incorrect login information.";
             }
         }
 
-        // else apologize
-        // apologize("Invalid username and/or password.");
         else
-            echo "Invalid login";
+            echo "Incorrect login information.";
     }
+
     else
     {
         // else render form
-        render("login_form.php", array("title" => "Log In"));
+        render("frontpage_form.php", array("title" => "Log In / Register"));
     }
 
 ?>
