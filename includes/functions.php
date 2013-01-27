@@ -16,7 +16,7 @@
      */
     function apologize($message)
     {
-        render("apology.php", array("message" => $message));
+        render("apology_form.php", array("message" => $message));
         exit;
     }
 

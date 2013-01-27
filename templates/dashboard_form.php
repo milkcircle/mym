@@ -1,4 +1,6 @@
-<?php echo "Your name: " + $full_name ?>
+<?php echo "Your name: $full_name"; ?>
+
+<br/><br/>
 
 <a href="add_medication.php">Add a medication</a>
 

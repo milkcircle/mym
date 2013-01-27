@@ -15,6 +15,6 @@
     $full_name = $user_info[0]["full_name"];
  
     // render dashboard (the home page form), passing in information about EVERYTHING.
-    render("dashboard_form.php", array("title" => "Dashboard", "full_name" = $full_name));
+    render("dashboard_form.php", array("title" => "Dashboard", "full_name" => $full_name));
 
 ?>

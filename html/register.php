@@ -116,40 +116,40 @@
         // validate inputs
         if (empty($_POST["full_name"]) || empty($_POST["username"]) || empty($_POST["password"]) || empty($_POST["confirmation"]))
         {
-            echo "empty fields";
+            apologize("Please fill out all the fields!");
         }            
         else if ($_POST["password"] != $_POST["confirmation"])
         {
-            echo "Make sure your passwords match!";
+            apologize("Make sure your passwords match!");
         }
-        
-        
 
         // try to register user
-        $confirm = query("INSERT INTO user (username, full_name, hash) VALUES(?, ?, ?)", 
-            htmlspecialchars($_POST["username"]), htmlspecialchars($_POST["full_name"]), htmlspecialchars(crypt($_POST["password"])));
-
-        $confirm = query("SELECT LAST_INSERT_ID() AS u_id");
-
-        if ($confirm === false)
+        $results = query("INSERT INTO user (username, full_name, hash) VALUES(?, ?, ?)", 
+            $_POST["username"], $_POST["full_name"], crypt($_POST["password"]));
+        if ($results === false)
         {
-            echo "Looks like user's already registered. Please log in!";
+            apologize("Username is taken");
         }
 
         // get new user's ID
-        $results = query("SELECT LAST_INSERT_ID() AS u_id");
-        $u_id = $results[0]["u_id"];
+        $rows = query("SELECT LAST_INSERT_ID() AS u_id");
+        if ($rows === false)
+        {   
+            // we shouldn't really ever need this
+            apologize("Can't find your u_id.");
+        }
+        $u_id = $rows[0]["u_id"];
 
         // log user in
         $_SESSION["u_id"] = $u_id;
 
         // redirect to index
-        redirect("index.php");
+        redirect("/");
     }
     else
     {
         // else render form
-        render("frontpage_form.php", array("title" => "Register"));
+        render("frontpage_form.php", array("title" => "Welcome!"));
     }
 
 ?>
