@@ -2,6 +2,7 @@
     $(function() {
         $( "#datepicker" ).datepicker( {
             dateFormat: 'yy-mm-dd'
+            defaultDate: '<?php echo $refill?>'
             }
         );
     });
