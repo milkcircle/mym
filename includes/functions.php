@@ -16,7 +16,7 @@
      */
     function apologize($message)
     {
-        render("apology.php", array("message" => $message));
+        render("apology_form.php", array("message" => $message));
         exit;
     }
 
@@ -153,10 +153,7 @@
             // extract variables into local scope
             extract($values);
 
-            if(empty($_SESSION["id"]))
-                require("../templates/header2.php");
-            else
-                require("../templates/header.php");
+            require("../templates/header.php");
                 
             // render template
             require("../templates/$template");

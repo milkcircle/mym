@@ -3,11 +3,9 @@
     /***********************************************************************
      * logout.php
      *
-     * Computer Science 50
-     * Final Project
+     * MYM
      *
      * Logs out the user.
-     * hcs.harvard.edu/~cs50-mym/logout.php
      **********************************************************************/
 
     // configuration

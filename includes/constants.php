@@ -10,7 +10,7 @@
      **********************************************************************/
 
     // your database's name
-    define("DATABASE", "mym");
+    define("DATABASE", "mym2");
 
     // your database's password
     define("PASSWORD", "crimson");
