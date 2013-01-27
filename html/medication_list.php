@@ -38,7 +38,7 @@
     else
     {
         // retrieves a 2d array of information from the associative table
-        $rows = query("SELECT * FROM user_medication WHERE u_id = ?", $_SESSION["u_id"]);
+        $rows = query("SELECT * FROM user_medication WHERE u_id = ? AND b_hidden = 0", $_SESSION["u_id"]);
         
         // append important information from the medication table
         foreach($rows as &$row)
