@@ -75,7 +75,7 @@
         
         foreach($keys as $key)
         {
-            $results = explode($key);
+            $results = explode("-", $key);
             dump($results);
         }
         
