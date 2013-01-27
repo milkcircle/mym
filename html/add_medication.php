@@ -44,6 +44,7 @@
             echo "Something went wrong inserting into association array.";
         }
         
+        redirect("add_medication.php");
     }    
     else
     {
