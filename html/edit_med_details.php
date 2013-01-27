@@ -78,10 +78,18 @@
         $details = $association_info[0]["details"];
         if (empty($details))
             $details = "Dosage and other information";
+            
+        // pass in medication name
+        $name = query("SELECT proprietary_name, proprietary_name_suffix FROM medication WHERE
+            m_id = ?", $association_info[0]["m_id"]);
+            
+        $proprietary_name = $name[0]["proprietary_name"];
+        $proprietary_name_suffix = $name[0]["proprietary_name_suffix"];
       
         // render the form that allows users to input a medication.
         render("edit_med_details_form.php", array("title" => "Update Details", "a_id" => $a_id, 
-            "refill" => $refill, "start" => $start, "end" => $end, "details" => $details));
+            "refill" => $refill, "start" => $start, "end" => $end, "details" => $details, 
+            "proprietary_name" => $proprietary_name, "proprietary_name_suffix" => $proprietary_name_suffix));
     }
 
 
