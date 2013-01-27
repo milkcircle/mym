@@ -1,6 +1,6 @@
 <script>
     $(function() {
-        $( ".datepicker" ).datepicker();
+        $( "#datepicker" ).datepicker();
     });
 </script>
 
@@ -8,7 +8,7 @@
     <form action="add_details.php" method="post">
         <fieldset>
             <div class="control-group">
-                <input autofocus type="text" class="datepicker" id="refill_date"/>
+                <p>Date: <input type="text" id="datepicker" /></p>
             </div>
         </fieldset>
     </form>
