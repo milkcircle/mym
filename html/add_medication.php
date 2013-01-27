@@ -45,6 +45,10 @@
             echo "Something went wrong inserting into association array.";
         }
         
+        // query the thing we JUST inserted, so that we can store that in SESSION
+        $a_id = mysql_insert_id();
+        $_SESSION["a_id"] = $a_id;
+        
         // render the form for extra details
         redirect("add_details.php");
     }    
