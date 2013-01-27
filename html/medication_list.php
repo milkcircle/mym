@@ -19,7 +19,7 @@
     $counter = 0;
     foreach($rows as $row)
     {
-        $a_id[$counter] = $row;
+        $a_id[$counter] = $row["a_id"];
         $counter++;
     }
  
