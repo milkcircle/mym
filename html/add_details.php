@@ -56,18 +56,22 @@
         // retrieve relevant a_id
         $a_id = $_SESSION["a_id"];
         
+        echo $a_id;
+        
         // use the a_id to query the user_medication form
-        $association_info = query("SELECT * FROM user_medication WHERE a_id = ?", $a_id);
+        
+        // $association_info = query("SELECT * FROM user_medication WHERE a_id = ?", $a_id);
         
         // make variables to pass into form
+        /*
         $refill = $association_info[0]["refill"];
         $start = $association_info[0]["start"];
         $end = $association_info[0]["end"];
-        $details = $association_info[0]["details"];
+        $details = $association_info[0]["details"];*/
       
         // render the form that allows users to input a medication.
-        render("add_medication_form.php", array("title" => "Update Details", "a_id" => $a_id, 
-            "refill" => $refill, "start" => $start, "end" => $end, "details" => $details));
+        render("add_medication_form.php", array("title" => "Update Details" /*, "a_id" => $a_id, 
+            "refill" => $refill, "start" => $start, "end" => $end, "details" => $details*/ ));
     }
 
 
