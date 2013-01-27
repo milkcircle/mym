@@ -15,6 +15,7 @@ local.properties
 .classpath
 .settings/
 .loadpath
+constants.php
 
 # External tool builders
 .externalToolBuilders/
