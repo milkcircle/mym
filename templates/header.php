@@ -8,6 +8,7 @@
         <link href="css/bootstrap.css" rel="stylesheet"/>
         <link href="css/bootstrap-responsive.css" rel="stylesheet"/>
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
+        <link href="css/styles.css" rel="stylesheet"/>
 
         <?php if (isset($title)): ?>
             <title><?= htmlspecialchars($title) ?></title>
@@ -24,7 +25,7 @@
 
     <body>
         <div class="container-fluid">
-            <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar navbar-top">
               <div class="navbar-inner">
                 <div class="container">
                   <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -32,10 +33,18 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                   </a>
-                  <a class="brand" href="index.php">Mind Your Meds</a>
+                  <a class="brand mym" href="index.php">Mind Your Meds</a>
                   <div class="nav-collapse collapse">
                     <ul class="nav">
-                      <li><a href="logout.php">Log Out</a></li>
+                        <?php
+                        if (!empty($_SESSION["u_id"]))
+                        {
+                            echo '<li><a href="add_medication.php">Add Medication</a></li>';
+                            echo '<li><a href="edit_account_details.php">Account Details</a></li>';
+                            echo '<li><a href="medication_list.php">Current Medications</a></li>';
+                            echo '<li><a href="logout.php">Log Out</a></li>';
+                        }
+                        ?>
                     </ul>
                   </div><!--/.nav-collapse -->
                 </div>

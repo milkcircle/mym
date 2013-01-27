@@ -31,7 +31,7 @@
 
 </script>
 
-Add a medication here!
+<h2>Add a medication here!</h2>
 
 <div>
     <form action="add_medication.php" method="post">

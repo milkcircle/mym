@@ -1,0 +1,91 @@
+body {
+background: #f3f9fd url(//a1.muscache.com/airbnb/static/wishlist/blue_cloud_bg-c4a9d04c3c5e56400cae8add5db0c5d9.jpg) repeat-x;
+}
+
+.navbar {
+overflow: visible;
+margin-bottom: 18px;
+}
+
+.navbar-top .navbar-inner, .navbar-fixed-top .navbar-inner {
+padding-left: 0;
+padding-right: 0;
+-webkit-border-radius: 0;
+-moz-border-radius: 0;
+border-radius: 0;
+border: 0;
+border-bottom: 1px solid #d0d0d0;
+}
+
+.container {
+position: relative;
+width: 995px;
+margin: 0 auto 0 auto;
+}
+
+.brand.mym {
+position: relative;
+margin-right: 2px;
+margin-left: -4px;
+margin-top: 4px;
+padding: 0;
+width: 170px;
+height: 36px;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+color: transparent;
+background: url(http://i.imgur.com/i9sLkv2.png);
+text-shadow: none;
+background-position: 0;
+background-repeat: no-repeat;
+margin-right: 10px;
+margin-left: -4px;
+text-indent: -9999px;
+z-index: 2;
+}
+
+.checkboxes td {
+	border : 0;
+}
+
+#bottom {
+color: #888;
+display: block;
+font-size: 11px;
+height: 95px;
+position: relative;
+margin-top: 15px;
+text-align: center;
+width: 100%;
+z-index: 0;
+}
+
+.left-cell {
+	text-align: right;
+}
+
+.front-container-full-signup .front-welcome {
+background: 0;
+-webkit-box-shadow: none;
+-moz-box-shadow: none;
+box-shadow: none;
+}
+
+.front-signin .js-front-signin {
+
+}
+
+
+
+form {
+font-size: 12px;
+margin-bottom: 0;
+display: block;
+margin-top: 0em;
+}
+
+body {
+font-size: 14px;
+line-height: 18px;
+color: #333;
+}

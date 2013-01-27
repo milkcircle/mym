@@ -1,11 +1,6 @@
-<?= "Welcome, $full_name!" ?>
-
-<br/><br/>
-
-<a href="add_medication.php">Add a medication</a>
+<h1><?= "Welcome, $full_name!" ?></h1>
 <br/>
-<a href="edit_account_details.php">Edit account details</a>
-<br/>
-<a href="medication_list.php">Medication List</a>
 
-<br/><br/>
+<!-- TEMPORARY !-->
+<h5>You have no pending reminders. Good job! </h5>
+<h5>Click on the tabs above to get started.</h5>

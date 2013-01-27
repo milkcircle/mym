@@ -18,6 +18,8 @@
     // add to the user_medication table in the database
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
+        $a_id = $_SESSION["a_id"];
+
         // simplify variables, gather input
         $refill_date = $_POST["refill_date"];
         $start_date = $_POST["start_date"];
@@ -26,22 +28,22 @@
         
         if (!empty($refill_date))
         {
-            query("UPDATE user_medication SET refill = ?", $refill_date);
+            query("UPDATE user_medication SET refill = ? WHERE a_id = ?", $refill_date, $a_id);
         }
 
         if (!empty($start_date))
         {
-            query("UPDATE user_medication SET start = ?", $start_date);
+            query("UPDATE user_medication SET start = ? WHERE a_id = ?", $start_date, $a_id);
         }
 
         if (!empty($end_date))
         {
-            query("UPDATE user_medication SET end = ?", $end_date);
+            query("UPDATE user_medication SET end = ? WHERE a_id = ?", $end_date, $a_id);
         }
 
         if (!empty($details))
         {
-            query("UPDATE user_medication SET details = ?", $details);
+            query("UPDATE user_medication SET details = ? WHERE a_id = ?", $details, $a_id);
         }
 
         // insert into the user_medication table
@@ -52,13 +54,15 @@
             echo "Update failed, for some reason.";
         }
         
-        $a_id = $_SESSION["a_id"];
         
+       /* 
         // empty the POST parameters that have been processed
+        // is there a purpose for this?
         $_POST["refill_date"] = "";
         $_POST["start_date"] = "";
         $_POST["end_date"] = "";
         $_POST["details"] = "";
+        */
         
         // filter array for only things that hold values...this contains keys AND values
         array_filter($_POST);

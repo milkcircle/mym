@@ -1,6 +1,6 @@
-Medication list
+<h2>Your Medications</h2>
 
-<table>
+<table class="table table-striped">
 <?php
 
   // make a nice two-column row for each medication entry
