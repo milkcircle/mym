@@ -52,24 +52,46 @@
             echo "Update failed, for some reason.";
         }
         
+        $a_id = $_SESSION["a_id"];
+        
         // empty the POST parameters that have been processed
         $_POST["refill_date"] = "";
         $_POST["start_date"] = "";
         $_POST["end_date"] = "";
         $_POST["details"] = "";
         
-        $a_id = $_SESSION["a_id"];
-        
         // filter array for only things that hold values...this contains keys AND values
         array_filter($_POST);
         
         // $days contains all the keys
-        $days = array_keys($_POST);
+        $keys = array_keys($_POST);
         
-        foreach($days as $day)
+        // initialize counter and variables
+        $counter = 0;
+        $time0 = null;
+        $time1 = null;
+        $time2 = null;
+        $time3 = null;
+        
+        // while the number of rows is valid
+        while ($counter <= 6)
         {
+            // gather times, if they exist
+            if (array_key_exists("$counter-time-0"))
+                $time0 = $_POST["$counter-time-0"];
+            if (array_key_exists("$counter-time-1"))
+                $time1 = $_POST["$counter-time-1"];
+            if (array_key_exists("$counter-time-2"))
+                $time2 = $_POST["$counter-time-2"];
+            if (array_key_exists("$counter-time-3"))
+                $time3 = $_POST["$counter-time-3"];
+                
             
+            
+            // increment $counter
+            $counter++;
         }
+        
         
         redirect("index.php");
     }    
