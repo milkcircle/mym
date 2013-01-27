@@ -39,15 +39,15 @@
             $today = date("Y-m-d");
         
         // insert information into association table
-        $check = query("INSERT INTO user_medication (u_id, m_id, start, b_hidden) VALUES (?, ?, ?, ?)", $_SESSION["u_id"], $m_id, $today, 0);
+        $check = query("INSERT INTO user_medication (u_id, m_id, start, b_hidden) VALUES (?, ?, ?, ?)
+            OUTPUT Inserted.a_id", $_SESSION["u_id"], $m_id, $today, 0);
         if ($check === false)
         {
             echo "Something went wrong inserting into association array.";
         }
         
         // query the thing we JUST inserted, so that we can store that in SESSION
-        $check = mysql_query($check);
-        $a_id = mysql_insert_id($check);
+        $a_id = $check[0]["a_id"];
         $_SESSION["a_id"] = $a_id;
         
         // render the form for extra details
