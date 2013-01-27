@@ -1,18 +1,22 @@
 <?php
 
   /***********************************************************************
-     * edit_med_details.php
+     * delete_med.php
      *
      * MYM
      *
-     * Either updates medication details, or renders the form.
-     * $_SESSION["a_id"] MUST CONTAIN A VALUE.
+     * "Deletes" a medication by hiding it...but we need it for the history
+     * table.
      * 
-     * TODO: MAKE SURE END THERAPY DATE IS AFTER BEGINNING THERAPY DATE!!!
      * 
      **********************************************************************/
 
     // configuration
     require("../includes/config.php");
-
+    
+    // delete medication
+    $a_id = $_SESSION["a_id"];
+    query("UPDATE user_medication SET b_hidden = 1 WHERE a_id = ?", $a_id);
+    
+    redirect("medication_list.php");
 ?>
