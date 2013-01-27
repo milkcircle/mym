@@ -66,19 +66,42 @@
         // $keys contains all the keys
         $keys = array_keys($_POST);
         
-        // initialize counter and variables
+        // initialize counter and arrays
         $counter = 0;
-        $time0 = null;
-        $time1 = null;
-        $time2 = null;
-        $time3 = null;
         
-        foreach($keys as $key)
+        while ($counter <= 6)
         {
-            $results = explode("-", $key);
-            dump($results);
+            // initialize arrays
+            $days = array();
+            $times = array();
+            
+            foreach($keys as &$key)
+            {
+                // explode the key
+                $results = explode("-", $key);
+                
+                // if the key was a day, add the day (Mon, Tue, ...) to the day array
+                if ($results[0] == $counter && count($results) == 2)
+                {
+                    array_push($days, $results[1]);
+                }
+                
+                // if the key was a time, add the time to the times array
+                if ($results[0] == $counter && count($results) == 3)
+                {
+                    array_push($times, $_POST["$key"]);
+                }
+            }
+            
+            foreach ($days as &$day)
+            {
+                foreach ($times as &$time)
+                {
+                    $confirm = query("INSERT INTO recurring_reminders (a_id, day, time) 
+                        VALUES(?, ?, ?)", $a_id, $day, $time);
+                }
+            }
         }
-        
         
         redirect("index.php");
     }    
