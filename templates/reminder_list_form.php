@@ -1,4 +1,4 @@
-Reminders for <?php echo "$medication[0][\"proprietary_name\"] $medication[0][\"proprietary_name_suffix\"]"?>
+Reminders for <?php echo "$name $suffix"?>
 
 <table>
 <?php
