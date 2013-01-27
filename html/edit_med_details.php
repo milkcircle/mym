@@ -52,6 +52,25 @@
             echo "Update failed, for some reason.";
         }
         
+        // empty the POST parameters that have been processed
+        $_POST["refill_date"] = "";
+        $_POST["start_date"] = "";
+        $_POST["end_date"] = "";
+        $_POST["details"] = "";
+        
+        $a_id = $_SESSION["a_id"];
+        
+        // filter array for only things that hold values...this contains keys AND values
+        array_filter($_POST);
+        
+        // $days contains all the keys
+        $days = array_keys($_POST);
+        
+        foreach($days as $day)
+        {
+            
+        }
+        
         redirect("index.php");
     }    
     else
