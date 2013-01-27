@@ -24,6 +24,26 @@
         $end_date = $_POST["end_date"];
         $details = $_POST["details"];
         
+        if (!empty($refill_date))
+        {
+            query("UPDATE user_medication SET refill = ?", $refill_date);
+        }
+
+        if (!empty($start_date))
+        {
+            query("UPDATE user_medication SET start = ?", $start_date);
+        }
+
+        if (!empty($end_date))
+        {
+            query("UPDATE user_medication SET end = ?", $end_date);
+        }
+
+        if (!empty($details))
+        {
+            query("UPDATE user_medication SET details = ?", $details);
+        }
+
         // insert into the user_medication table
         $check = query("UPDATE user_medication SET refill = ?, start = ?, end = ?, details = ? WHERE
             a_id = ?", $refill_date, $start_date, $end_date, $details, $_SESSION["a_id"]);
