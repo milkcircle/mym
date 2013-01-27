@@ -63,9 +63,18 @@
         // make variables to pass into form
     
         $refill = $association_info[0]["refill"];
+        if (empty($refill))
+            $refill = "Refill Date";
+        
         $start = $association_info[0]["start"];
+        
         $end = $association_info[0]["end"];
+        if (empty($end))
+            $end = "End Date";
+        
         $details = $association_info[0]["details"];
+        if (empty($details))
+            $details = "Dosage and other information";
       
         // render the form that allows users to input a medication.
         render("add_medication_form.php", array("title" => "Update Details", "a_id" => $a_id, 
