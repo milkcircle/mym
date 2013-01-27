@@ -16,12 +16,12 @@
     // add to the user_medication table in the database
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
+        // simplify the variable name
+        $medication_name = $_POST["medication_name"];
+        
         // check that the user put something in the medication name slot
         if (empty($medication_name))
             apologize("Input a medication please!");
-        
-        // simplify the variable name
-        $medication_name = $_POST["medication_name"];
 
         /* check if the medication name is custom or not */
 
