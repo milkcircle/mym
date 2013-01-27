@@ -1,4 +1,4 @@
-<!-- JQuery datepicker object!-->
+
 <script>
     $(function() {
         $( ".datepicker" ).datepicker({
@@ -7,10 +7,10 @@
         );
     });
 
-    // 02.00 AM - 03.30 PM, 15 minutes steps.
     $(function() {
         $('.timepicker').timepicker({
-        timeFormat: "hh:mm tt"
+            timeFormat: "hh:mm:tt",
+            stepMinute: 15
         });
     });
 </script>
@@ -28,13 +28,16 @@
     "<option value = 'Saturday'>Saturday</option>" +
     "<select></br>"; 
 
-    time_select = "<input type="text" id="time2" size="10" value="12.00 PM"/>"; 
+    time_select = "<input type='text' id='time' size='10' class='timepicker' value='12.00 PM'/><br/>"; 
     function addDay(){
         if (fields != 10)
         {
-            //document.getElementById('times').innerHTML += time_select;
-            $('#times').append(time_select);
+            $('#times').append("<input type='text' name='time " + fields.toString() + "' size='10' class='timepicker' value='12.00 PM'/><br/>");
             fields += 1;
+            $('.timepicker').timepicker({
+                timeFormat: "hh:mm:tt",
+                stepMinute: 15
+            });
         }
         else
         {
@@ -45,7 +48,11 @@
 </script>
 
 <div>
-    <form action="add_details.php" method="post">
+    <b><?php echo "$proprietary_name $proprietary_name_suffix"?></b>
+</div>
+
+<div>
+    <form action="edit_med_details.php" method="post">
         <fieldset>
             <div class="control-group">
                 <p>Refill Date: <input name="refill_date" type="text" class="datepicker" placeholder="<?= $refill?>"/></p>
@@ -70,7 +77,7 @@
             <div/>
 
             <div id="times">
-                <input type="text" id="time2" size="10" class="timepicker" value="12.00 PM"/>
+                <input type='text' name='time' size='10' class='timepicker' value='12.00 PM'/><br/>
             </div>
 
             <div class="control-group">
