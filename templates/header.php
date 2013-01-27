@@ -31,7 +31,8 @@
                 <div>
                     <div data-dropdown="dropdown" class="topbar" id="navbar">
                         <ul class="nav nav-pills">
-                                
+                            <li><a href="index.php">Dashboard</a></li>
+                            <li><a href="logout.php">Log Out</a></li>
                         </ul>                       
                     </div>
                 </div>​
