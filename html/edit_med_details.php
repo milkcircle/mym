@@ -18,6 +18,7 @@
     // add to the user_medication table in the database
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
+        dump($_POST);
         // simplify variables, gather input
         $refill_date = $_POST["refill_date"];
         $start_date = $_POST["start_date"];
