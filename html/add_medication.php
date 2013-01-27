@@ -38,13 +38,15 @@
             // represent today's date as SQL format
             $today = date("Y-m-d");
         
+        // insert information into association table
         $check = query("INSERT INTO user_medication (u_id, m_id, start, b_hidden) VALUES (?, ?, ?, ?)", $_SESSION["u_id"], $m_id, $today, 0);
         if ($check === false)
         {
             echo "Something went wrong inserting into association array.";
         }
         
-        redirect("add_medication.php");
+        // render the form for extra details
+        redirect("add_details.php");
     }    
     else
     {
