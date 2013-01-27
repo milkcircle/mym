@@ -16,10 +16,11 @@
     
     // makes $rows into a single-dimension array called $a_id
     $a_id = array();
-    
+    $counter = 0;
     foreach($rows as $row)
     {
-        $a_id["$row"] = $row;
+        $a_id[$counter] = $row;
+        $counter++;
     }
  
     dump($a_id);
