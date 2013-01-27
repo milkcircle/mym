@@ -1,4 +1,4 @@
-<?php echo "Welcome, $full_name"; ?>
+<?= "Welcome, $full_name!" ?>
 
 <br/><br/>
 
