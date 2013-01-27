@@ -101,6 +101,8 @@
                         VALUES(?, ?, ?)", $a_id, $day, $time);
                 }
             }
+            
+            $counter++;
         }
         
         redirect("index.php");
