@@ -23,7 +23,7 @@
         
         // insert into the user_medication table
         $check = query("UPDATE user_medication SET refill = ?, start = ?, end = ?, details = ? WHERE
-            a_id = ?", $refill_date, $start_date, $end_date, $details);
+            a_id = ?", $refill_date, $start_date, $end_date, $details, $_SESSION["a_id"]);
         if ($check === false)
         {
             echo "Update failed, for some reason.";
