@@ -1,0 +1,35 @@
+Documentation
+
+login.php
+	- if form is submitted, check if username exists.
+	- if username exists, check password
+	- if password is correct, login.
+	- if login fails, say so.
+
+register.php
+	- if form is submitted
+		if something is empty, echo error msg
+		if passwords dont match, echo error msg
+	- try to register user. if fails, inform user that username is taken.
+	- if successful, log user in.
+	(
+		code for how to format emails for each carrier given.
+		code for how to use php mailer
+	)
+
+config.php
+	(
+		may or may not have to screw with the pregmatch stuff
+	)
+
+index.php
+	renders dashboard_form
+
+add_medication.php
+	- if form is submitted
+		- inputs information into user_medication table
+		- if med doesn't exist in the med table, input it
+	- else, render form
+
+autocomplete_meds.php
+	- queries database for search terms, relays back to add_medicaiton_form.php for autocomplete

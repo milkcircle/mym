@@ -1,0 +1,15 @@
+Documentation_templates
+
+header.php
+
+footer.php
+
+frontpage_form.php
+	first div is login.php
+	second div is register.php
+
+index.php
+
+add_medication_form.php
+	renders form to add medication
+	uses autocomplete to search medication database
