@@ -31,7 +31,8 @@
         
         // render the reminder list, passing in information about everything about the medication.
         render("reminder_list_form.php", array("title" => "Reminders about $proprietary_name $proprietary_name_suffix",
-            "reminders" => $reminders, "overrides" => $overrides, "medication" => $medication));
+            "reminders" => $reminders, "overrides" => $overrides, "medication" => $medication,
+            "name" => $proprietary_name, "suffix" => $proprietary_name_suffix));
     }
 
 ?>
