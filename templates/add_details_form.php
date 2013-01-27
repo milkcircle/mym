@@ -1,6 +1,6 @@
 <script>
     $(function() {
-        $( "#datepicker" ).datepicker( {
+        $( ".datepicker" ).datepicker( {
             dateFormat: 'yy-mm-dd'
             }
         );
@@ -11,17 +11,17 @@
     <form action="add_details.php" method="post">
         <fieldset>
             <div class="control-group">
-                <p>Refill Date: <input autofocus name="refill_date" type="text" id="datepicker" placeholder="<?= $refill?>"/></p>
+                <p>Refill Date: <input autofocus name="refill_date" type="text" class="datepicker" placeholder="<?= $refill?>"/></p>
             </div>
             <br/><br/>
             
             <div class="control-group">
-                <p>Treatment Start Date: <input name="start_date" type="text" id="datepicker" placeholder="<?= $start?>"/></p>
+                <p>Treatment Start Date: <input name="start_date" type="text" class="datepicker" placeholder="<?= $start?>"/></p>
             </div>
             <br/><br/>
             
             <div class="control-group">
-                <p>Treatment End Date: <input name="end_date" type="text" id="datepicker" placeholder="<?= $end?>"/></p>
+                <p>Treatment End Date: <input name="end_date" type="text" class="datepicker" placeholder="<?= $end?>"/></p>
             </div>
             <br/><br/>
             
