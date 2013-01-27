@@ -13,7 +13,7 @@
     function addInput(){
         if (fields != 10)
         {
-            document.getElementById('times').innerHTML += "<input type='file' value='' /><br />";
+            document.getElementById('times').innerHTML += "<select><option value = 'hi'>hi</option></select><br />";
             fields += 1;
         }
         else
