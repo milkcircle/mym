@@ -13,7 +13,7 @@
 
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
-        $response = $_POST["submit"];
+        $response = $_POST['submit'];
         $strings = explode("-", $response);
         $action = $strings[0];
         $a_id = $strings[1];
