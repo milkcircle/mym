@@ -18,7 +18,6 @@
     // add to the user_medication table in the database
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
-        dump($_POST);
         // simplify variables, gather input
         $refill_date = $_POST["refill_date"];
         $start_date = $_POST["start_date"];
@@ -64,7 +63,7 @@
         // filter array for only things that hold values...this contains keys AND values
         array_filter($_POST);
         
-        // $days contains all the keys
+        // $keys contains all the keys
         $keys = array_keys($_POST);
         
         // initialize counter and variables
@@ -74,23 +73,10 @@
         $time2 = null;
         $time3 = null;
         
-        // while the number of rows is valid
-        while ($counter <= 6)
+        foreach($keys as $key)
         {
-            // gather times, if they exist
-            if (array_key_exists("$counter-time-0"))
-                $time0 = $_POST["$counter-time-0"];
-            if (array_key_exists("$counter-time-1"))
-                $time1 = $_POST["$counter-time-1"];
-            if (array_key_exists("$counter-time-2"))
-                $time2 = $_POST["$counter-time-2"];
-            if (array_key_exists("$counter-time-3"))
-                $time3 = $_POST["$counter-time-3"];
-                
-            
-            
-            // increment $counter
-            $counter++;
+            $results = explode($key);
+            dump($results);
         }
         
         
