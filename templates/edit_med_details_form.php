@@ -7,17 +7,10 @@
         );
     });
 
-    $(function() {
-        $('.timepicker').timepicker({
-            timeFormat: "hh:mm:tt",
-            stepMinute: 15
-        });
-    });
 </script>
 
 <script language="javascript">
-    fields = 0;
-
+    
     day_select = "<select>" +
     "<option value = 'Monday'>Monday</option>" +
     "<option value = 'Tuesday'>Tuesday</option>" +
@@ -26,14 +19,30 @@
     "<option value = 'Friday'>Friday</option>" +
     "<option value = 'Saturday'>Saturday</option>" +
     "<option value = 'Saturday'>Saturday</option>" +
-    "<select></br>"; 
-
-    time_select = "<input type='text' id='time' size='10' class='timepicker' value='12.00 PM'/><br/>"; 
+    "<select></br>";
+    day_fields = 0;
+    b_days = true; // true if limit has not been reached
     function addDay(){
-        if (fields != 10)
+        if (day_fields != 7)
         {
-            $('#times').append("<input type='text' name='time " + fields.toString() + "' size='10' class='timepicker' value='12.00 PM'/><br/>");
-            fields += 1;
+            $('#days').append(day_select);
+            day_fields += 1;
+        }
+        else
+        {
+            if (b_days)
+                $('#days').append("<br />Only 7 entries are allowed!");
+            b_days = false;
+        }
+    }
+
+    time_fields = 0;
+    b_times = true; // true if limit has not been reached
+    function addTime(){
+        if (time_fields != 10)
+        {
+            $('#times').append("<input type='text' name='time " + time_fields.toString() + "' size='10' class='timepicker' value='12.00 PM'/><br/>");
+            time_fields += 1;
             $('.timepicker').timepicker({
                 timeFormat: "hh:mm:tt",
                 stepMinute: 15
@@ -41,8 +50,9 @@
         }
         else
         {
-            $('#times').append("<br />Only 10 times are allowed.");
-            document.form.add.disabled=true;
+            if (b_times)
+                $('#times').append("Only 10 times are allowed!");
+            b_times = false;
         }
     }
 </script>
@@ -70,15 +80,40 @@
                 <p>Drug details: <input name="details" type="text" placeholder="<?= $details?>"/></p>
             </div>
 
-            <div class="control-group">
-                <form name="form">
-                    <input type="button" class = "btn" onclick="addDay()" name="add" value="click me" />
-                </form>
-            <div/>
+            
 
-            <div id="times">
-                <input type='text' name='time' size='10' class='timepicker' value='12.00 PM'/><br/>
-            </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Days</th>
+                    <th>Times</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td valign="top">
+                        <div class="control-group">
+                            <form name="form">
+                                <input type="button" class = "btn" onclick="addDay()" name="add" value="Add more days!" />
+                            </form>
+                        <div/>
+
+                        <div id="days">
+                        </div>
+                    </td>
+                    <td valign="top">
+                        <div class="control-group">
+                            <form name="form">
+                                <input type="button" class = "btn" onclick="addTime()" name="add" value="Add more times!" />
+                            </form>
+                        <div/>
+
+                        <div id="times">
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
             <div class="control-group">
                 <button type="submit" class="btn">Update Medication Details</button>
