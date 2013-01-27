@@ -39,8 +39,7 @@
             $today = date("Y-m-d");
         
         // insert information into association table
-        $check = query("INSERT INTO user_medication (u_id, m_id, start, b_hidden) VALUES (?, ?, ?, ?)
-            OUTPUT Inserted.a_id", $_SESSION["u_id"], $m_id, $today, 0);
+        $check = query("INSERT INTO user_medication (u_id, m_id, start, b_hidden) VALUES (?, ?, ?, ?)", $_SESSION["u_id"], $m_id, $today, 0);
         if ($check === false)
         {
             echo "Something went wrong inserting into association array.";
