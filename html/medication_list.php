@@ -11,12 +11,22 @@
     // configuration
     require("../includes/config.php"); 
 
-    $user_meds = query("SELECT * FROM user_medication WHERE u_id = ?", $_SESSION["u_id"]);
+    // retrieves a 2d array of a_id values
+    $rows = query("SELECT a_id FROM user_medication WHERE u_id = ?", $_SESSION["u_id"]);
     
+    // makes $rows into a single-dimension array called $a_id
+    $a_id = array();
     
+    foreach($rows as $row)
+    {
+        $a_id["$row"] = $row;
+    }
  
+    dump($a_id);
+    
     // render dashboard (the home page form), passing in information about EVERYTHING.
-    render("dashboard_form.php", array("title" => "Dashboard", "full_name" => $full_name));
+    render("medication_list_form.php", array("title" => "Medication List", "user_meds" => $user_meds));
 
 
 ?>
+ 
