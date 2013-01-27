@@ -8,13 +8,12 @@ Medication list
   {
     echo "<tr>";
       echo "<td>";
-        echo "<div>"
-        
-    
+        echo "<div><b>Name: </b>$row[\"proprietary_name\"] $row[\"proprietary_name_suffix\"]</div>";
+        echo "<div><b>Details: </b>$row[\"details\"];
       echo "</td>";
-    
+  
       echo "<td>";
-    
+        echo 
     
     
       echo "</td>";
