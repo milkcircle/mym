@@ -46,7 +46,8 @@
         }
         
         // query the thing we JUST inserted, so that we can store that in SESSION
-        $_SESSION["a_id"] = mysql_insert_id();
+        $a_id = query("SELECT LAST_INSERT_ID() AS a_id");
+        $_SESSION["a_id"] = $a_id[0]["a_id"];
         
         // render the form for extra details
         redirect("add_details.php");
