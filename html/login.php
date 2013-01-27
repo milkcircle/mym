@@ -37,12 +37,12 @@
             // if password is incorrect
             else
             {
-                echo "Incorrect login information.";
+                apologize("Incorrect login information.");
             }
         }
 
         else
-            echo "Incorrect login information.";
+            apologize("Incorrect login information.");
     }
 
     else

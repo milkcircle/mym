@@ -48,13 +48,15 @@
         redirect("/");
     }    
     else
-    {   
+    {
+        $u_id = $_SESSION["u_id"];
+
         // fill full_name box with current full name
-        $results = query("SELECT full_name FROM user WHERE u_id = ?", $_SESSION["u_id"]);
+        $results = query("SELECT * FROM user WHERE u_id = ?", $u_id);
         $full_name_placeholder = $results[0]["full_name"];
 
         // fill email box with current email if user has one, and default text if user does not
-        $results = query("SELECT email FROM user_email WHERE u_id = ?", $_SESSION["u_id"]);
+        $results = query("SELECT * FROM user_email WHERE u_id = ?", $u_id);
         $email_placeholder;
         if (empty($results))
             $email_placeholder = "What's your email address?";
@@ -62,8 +64,7 @@
             $email_placeholder = $results[0]["email"];
 
         // fill phone_number box with current phone number if user has one, and default text if user does not
-        $results = query("SELECT phone FROM user_phone WHERE u_id = ?", $_SESSION["u_id"]);
-        $phone_placeholder;
+        $results = query("SELECT phone FROM user_phone WHERE u_id = ?", $u_id);
         if (empty($results))
             $phone_placeholder = "What's your phone number?";
         else

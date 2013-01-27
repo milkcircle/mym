@@ -11,6 +11,7 @@
     // configuration
     require("../includes/config.php"); 
 
+    // get full name
     $user_info = query("SELECT * FROM user WHERE u_id = ?", $_SESSION["u_id"]);
     $full_name = $user_info[0]["full_name"];
  
