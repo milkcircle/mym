@@ -15,7 +15,7 @@
     $rows = query("SELECT * FROM user_medication WHERE u_id = ?", $_SESSION["u_id"]);
     
     // append important information from the medication table
-    foreach($rows as $row)
+    foreach($rows as &$row)
     {
         // search from medication table
         $query = query("SELECT * FROM medication WHERE m_id = ?", $row["m_id"]);
@@ -23,9 +23,6 @@
         // simplify variables
         $proprietary_name = $query[0]["proprietary_name"];
         $proprietary_name_suffix = $query[0]["proprietary_name_suffix"];
-        
-        global $row["proprietary_name"];
-        global $row["proprietary_name_suffix"];
         
         $row["proprietary_name"] = $proprietary_name;
         $row["proprietary_name_suffix"] = $proprietary_name_suffix;
