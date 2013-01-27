@@ -9,5 +9,3 @@
 <a href="medication_list.php">Medication List</a>
 
 <br/><br/>
-
-<a href="logout.php">Log out</a>

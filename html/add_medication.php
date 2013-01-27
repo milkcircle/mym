@@ -54,7 +54,7 @@
         $_SESSION["a_id"] = $a_id[0]["a_id"];
         
         // render the form for extra details
-        redirect("add_details.php");
+        redirect("edit_med_details.php");
     }    
     else
     {
