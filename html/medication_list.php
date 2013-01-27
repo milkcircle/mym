@@ -25,10 +25,9 @@
         $proprietary_name_suffix = $query[0]["proprietary_name_suffix"];
         
         $row["proprietary_name"] = $proprietary_name;
+        dump($row["proprietary_name"]);
         $row["proprietary_name_suffix"] = $proprietary_name_suffix;
     }
-    
-    dump($rows);
     
     // render dashboard (the home page form), passing in information about EVERYTHING.
     render("medication_list_form.php", array("title" => "Medication List", "rows" => $rows));
