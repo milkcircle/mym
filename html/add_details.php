@@ -77,7 +77,7 @@
             $details = "Dosage and other information";
       
         // render the form that allows users to input a medication.
-        render("add_medication_form.php", array("title" => "Update Details", "a_id" => $a_id, 
+        render("add_details_form.php", array("title" => "Update Details", "a_id" => $a_id, 
             "refill" => $refill, "start" => $start, "end" => $end, "details" => $details));
     }
 
