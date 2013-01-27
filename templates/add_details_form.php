@@ -11,7 +11,7 @@
     <form action="add_details.php" method="post">
         <fieldset>
             <div class="control-group">
-                <p>Refill Date: <input autofocus name="refill_date" type="text" class="datepicker" placeholder="<?= $refill?>"/></p>
+                <p>Refill Date: <input name="refill_date" type="text" class="datepicker" placeholder="<?= $refill?>"/></p>
             </div>
             <br/><br/>
             
