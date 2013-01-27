@@ -46,7 +46,8 @@
         }
         
         // query the thing we JUST inserted, so that we can store that in SESSION
-        $a_id = mysql_insert_id();
+        $check = mysql_query($check);
+        $a_id = mysql_insert_id($check);
         $_SESSION["a_id"] = $a_id;
         
         // render the form for extra details
