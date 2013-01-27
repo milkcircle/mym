@@ -13,15 +13,27 @@
 
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
+        // parse string
         $response = $_POST['submit'];
         $strings = explode("-", $response);
         $action = $strings[0];
         $a_id = $strings[1];
-        dump($strings);
         
+        // store relevant a_id in SESSION
         $_SESSION["a_id"] = $a_id;
         
-        
+        if ($action == "details")
+        {
+            redirect("edit_med_details.php");
+        }
+        else if ($action == "reminder")
+        {
+            redirect("reminder_list.php");
+        }
+        else if ($action == "delete")
+        {
+            redirect("delete_med.php");
+        }
     }
     else
     {
