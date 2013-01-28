@@ -4,11 +4,10 @@
         <h1>Never forget your medications again.</h1>
         <p><h3>Manage your meds and send reminders easily from one place.</h3></p>
       </div>
-
     </div>
 </div>
 
-    <div>
+    <div align="right">
         <form action="login.php" method="post">
             <fieldset>
                 <div class="control-group">

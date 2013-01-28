@@ -31,17 +31,19 @@
 
 </script>
 
-<h2>Add a medication here!</h2>
+<center><h2>Add a medication here!</h2></center>
 
 <div>
-    <form action="add_medication.php" method="post">
-        <fieldset>
-            <div class="control-group">
-                <input autofocus name="medication_name" placeholder="Medication Name" type="text" id="medication_name"/>
-            </div>
-            <div class="control-group">
-                <button type="submit" class="btn">Add</button>
-            </div>
-        </fieldset>
-    </form>
+    <center>
+        <form action="add_medication.php" method="post">
+            <fieldset>
+                <div class="control-group">
+                    <input autofocus name="medication_name" placeholder="Medication Name" type="text" id="medication_name"/>
+                </div>
+                <div class="control-group">
+                    <button type="submit" class="btn">Add</button>
+                </div>
+            </fieldset>
+        </form>
+    </center>
 </div>

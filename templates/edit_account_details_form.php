@@ -1,4 +1,4 @@
-<h2>Account Details</h2>
+<center><h2>Account Details</h2></center>
 
 <div>
     <form action="edit_account_details.php" method="post">
@@ -31,10 +31,13 @@
             </table>
 
             <div class="control-group">
-                <button type="submit" class="btn">Update!</button>
+                <center>
+                    <a href="change_password.php"> Click Here to change your password</a>
+                    <br/><br/>
+                    <button type="submit" class="btn btn-large">Update!</button>
+                </center>
             </div>
         </fieldset>
     </form>
     <br/>
-    <a href="change_password.php"> Click Here to change your password</a>
 </div>

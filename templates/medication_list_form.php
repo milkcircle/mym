@@ -1,6 +1,10 @@
-<h2>Your Medications</h2>
+<center><h2>Your Medications</h2></center>
 
-<table class="table table-striped">
+<style>
+	
+</style>
+
+<table class="table table-striped table-hover">
 <?php
 
   // make a nice two-column row for each medication entry
@@ -21,13 +25,15 @@
   
       // print buttons for different actions
       echo "<td>";
-        echo "<form action='medication_list.php' method='post'>";
-          echo "<button name='submit' type='submit' class='btn' value='details-$a_id'>Edit Details</button>";
-          echo " ";
-          echo "<button name='submit' type='submit' class='btn' value='reminder-$a_id'>Reminders</button>";
-          echo " ";
-          echo "<button name='submit' type='submit' class='btn' value='delete-$a_id'>Delete</button>";
-        echo "</form>";
+        echo "<div class='hover-show'>";
+          echo "<form action='medication_list.php' method='post'>";
+            echo "<button name='submit' type='submit' class='btn' value='details-$a_id'>Edit Details</button>";
+            echo " ";
+            echo "<button name='submit' type='submit' class='btn' value='reminder-$a_id'>Reminders</button>";
+            echo " ";
+            echo "<button name='submit' type='submit' class='btn' value='delete-$a_id'>Delete</button>";
+          echo "</form>";
+        echo "</div>";
       echo "</td>";
       
     echo "</tr>";

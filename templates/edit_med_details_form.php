@@ -7,6 +7,14 @@
         );
     });
 
+    // show the first row when document rol
+    $(document).ready(function(){
+        addRow();
+
+        // automatically check all the boxes
+        $('.checkbox').prop('checked', true);
+    });
+
 </script>
 
 <script language="javascript">
@@ -20,13 +28,13 @@
                     '<td width="50%" valign="top">' +
                         '<div>' +
                             "<table class='checkboxes' name='day " + row_num.toString() + "'>"  + 
-		                            "<td><input type='checkbox' name='" + row_num.toString() + "-mon' value='1'>Mon</td>" +
-		                            "<td><input type='checkbox' name='" + row_num.toString() + "-tue' value='2'>Tue</td>" +
-		                            "<td><input type='checkbox' name='" + row_num.toString() + "-wed' value='3'>Wed</td>" +
-		                            "<td><input type='checkbox' name='" + row_num.toString() + "-thu' value='4'>Thu</td>" +
-		                            "<td><input type='checkbox' name='" + row_num.toString() + "-fri' value='5'>Fri</td>" +
-		                            "<td><input type='checkbox' name='" + row_num.toString() + "-sat' value='6'>Sat</td>" +
-		                            "<td><input type='checkbox' name='" + row_num.toString() + "-sun' value='0'>Sun</td>" +
+		                            "<td><input class='checkbox' type='checkbox' name='" + row_num.toString() + "-mon' value='1'>Mon</td>" +
+		                            "<td><input class='checkbox' type='checkbox' name='" + row_num.toString() + "-tue' value='2'>Tue</td>" +
+		                            "<td><input class='checkbox' type='checkbox' name='" + row_num.toString() + "-wed' value='3'>Wed</td>" +
+		                            "<td><input class='checkbox' type='checkbox' name='" + row_num.toString() + "-thu' value='4'>Thu</td>" +
+		                            "<td><input class='checkbox' type='checkbox' name='" + row_num.toString() + "-fri' value='5'>Fri</td>" +
+		                            "<td><input class='checkbox' type='checkbox' name='" + row_num.toString() + "-sat' value='6'>Sat</td>" +
+		                            "<td><input class='checkbox' type='checkbox' name='" + row_num.toString() + "-sun' value='0'>Sun</td>" +
 		                    "</table>" +
                         '</div>' +
                     '</td>' +
@@ -60,21 +68,21 @@
     time_fields = 0;
     b_times = true; // true if limit has not been reached
     function addTime(row){
-        if (time_fields != 10)
-        {
+    //    if (time_fields != 10)
+    //    {
             $('#times_' + row).append("<input type='text' name='" + row + "-time-" + time_fields.toString() + "' size='10' placeholder='Enter your time!' class='timepicker'/><br/>");
             time_fields += 1;
             $('.timepicker').timepicker({
                 timeFormat: "hh:mm:tt",
                 stepMinute: 15
             });
-        }
+    /*    }
         else
         {
             if (b_times)
                 $('#times_' + row).append("Only 10 times are allowed!");
             b_times = false;
-        }
+        }*/
     }
 </script>
 
@@ -121,24 +129,26 @@
         		</tr>
         	</table>
 
-            <div class="control-group">
-	            <form name="form">
-	                <input type="button" class = "btn" onclick="addRow()" name="add" value="Add more rows!" />
-	            </form>
-	        <div/>
-
-        <table class="table table-striped">
-            <thead>
-                    <th>Days</th>
-                    <th>Times</th>
-            </thead>
-            <tbody class = "rows">
-            	<!-- rows go in here! !-->
-            </tbody>
-        </table>
+            <table class="table table-striped">
+                <thead>
+                        <th>Days</th>
+                        <th>Times</th>
+                </thead>
+                <tbody class = "rows">
+                	<!-- rows go in here! !-->
+                </tbody>
+            </table>
 
             <div class="control-group">
-                <button type="submit" class="btn">Update!</button>
+                <form name="form">
+                    <input type="button" class = "btn" onclick="addRow()" name="add" value="Want to be reminded at different times on different days?" />
+                </form>
+            <div/>
+
+            <br/>
+
+            <div class="control-group">
+                <center><button type="submit" class="btn btn-large">Update!</button></center>
             </div>
             
         </fieldset>
