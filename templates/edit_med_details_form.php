@@ -76,13 +76,6 @@
                 timeFormat: "hh:mm:tt",
                 stepMinute: 15
             });
-    /*    }
-        else
-        {
-            if (b_times)
-                $('#times_' + row).append("Only 10 times are allowed!");
-            b_times = false;
-        }*/
     }
 </script>
 
@@ -93,14 +86,13 @@
 <div>
     <form action="edit_med_details.php" method="post">
         <fieldset>
-
         	<table class="table table-striped">
         		<tr>
         			<td style="text-align:right; vertical-align: middle">
         				When will you begin?
         			</td>
         			<td valign="top">
-        				<input name="start_date" type="text" class="datepicker" placeholder="<?= $start?>"/>
+        				<input name="start_date" type="text" class="datepicker" placeholder="<?= $start_placeholder?>"/>
         			</td>
         		</tr>
         		<tr>
@@ -108,7 +100,7 @@
         				When will you stop taking them?
         			</td>
         			<td valign="top">
-        				<input name="end_date" type="text" class="datepicker" placeholder="<?= $end?>"/>
+        				<input name="end_date" type="text" class="datepicker" placeholder="<?= $end_placeholder?>"/>
         			</td>
         		</tr>
         		<tr>
@@ -116,7 +108,7 @@
         				When do you need to refill?
         			</td>
         			<td valign="top">
-        				<input name="refill_date" type="text" class="datepicker" placeholder="<?= $refill?>"/>
+        				<input name="refill_date" type="text" class="datepicker" placeholder="<?= $refill_placeholder?>"/>
         			</td>
         		</tr>
         		<tr>
@@ -124,7 +116,8 @@
         				Write down any important reminders.
         			</td>
         			<td valign="top">
-        				<input name="details" type="text" placeholder="<?= $details?>"/>
+                        <textarea class="xxlarge" type="text" name="details" placeholder="<?= $details_placeholder?>" rows="3"></textarea>
+        				<!--<input name="details" type="text" placeholder="<?= $details_placeholder?>"/>-->
         			</td>
         		</tr>
         	</table>
