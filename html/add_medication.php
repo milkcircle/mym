@@ -5,6 +5,8 @@
      *
      * MYM
      *
+     * github test
+     *
      * Renders the form that allows users to add a medication, and 
      * adds the medication to the user_medication table if the medication 
      * has been submitted.
