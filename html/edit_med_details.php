@@ -49,70 +49,8 @@
         {
             query("UPDATE user_medication SET details = ? WHERE a_id = ?", $details, $a_id);
         }
-
-
-        /* COMMENTED OUT BECAUSE IT'S REDUNDANT - PETER
-        // insert into the user_medication table. 
-        $check = query("UPDATE user_medication SET refill = ?, start = ?, end = ?, details = ? WHERE
-            a_id = ?", $refill_date, $start_date, $end_date, $details, $_SESSION["a_id"]);
-        if ($check === false)
-        {
-            echo "Update failed, for some reason.";
-        }
-        */
         
-       /* 
-        // empty the POST parameters that have been processed
-        // is there a purpose for this?
-        $_POST["refill_date"] = "";
-        $_POST["start_date"] = "";
-        $_POST["end_date"] = "";
-        $_POST["details"] = "";
-        */
-        
-        // filter array for only things that hold values...this contains keys AND values
-        array_filter($_POST);
-        
-        // $keys contains all the keys
-        $keys = array_keys($_POST);
-
-        // run for each row submitted
-        for($i = 0; $i < ROW_LIMIT; $i++)
-        {
-            // initialize arrays
-            $days = array();
-            $times = array();
-            
-            foreach($keys as &$key)
-            {
-                // explode the key
-                $results = explode("-", $key);
-                
-                // if the key was a day, add the day (Mon, Tue, ...) to the day array
-                if ($results[0] == $i && count($results) == 2)
-                {
-                    array_push($days, $results[1]);
-                }
-                
-                // if the key was a time, add the time to the times array
-                if ($results[0] == $i && count($results) == 3)
-                {
-                    array_push($times, $_POST["$key"]);
-                }
-            }
-            
-            // insert date-time combination into recurring_reminders table
-            foreach ($days as &$day)
-            {
-                foreach ($times as &$time)
-                {
-                    $confirm = query("INSERT INTO recurring_reminders (a_id, day, time) 
-                        VALUES(?, ?, ?)", $a_id, $day, $time);
-                }
-            }
-        }
-        
-        redirect("index.php");
+        redirect("set_reminders.php");
     }    
     else
     {
